@@ -1,5 +1,5 @@
 <script>
-	import Avatar from '$lib/assets/img/avatar.png';
+	import Avatar from '$lib/Assets/img/avatar.png';
 </script>
 
 <main>

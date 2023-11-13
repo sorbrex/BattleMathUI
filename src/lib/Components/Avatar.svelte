@@ -1,5 +1,5 @@
 <main>
-	<img src="/images/avatar.png" alt="Avatar" class="avatar" />
+	<img src="/Images/avatar.png" alt="Avatar" class="avatar" />
 </main>
 
 <style>

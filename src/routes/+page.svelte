@@ -18,16 +18,17 @@
 		margin: 0 auto;
 	}
 
+	h1 {
+		color: #f2f2f2;
+		text-transform: uppercase;
+		font-size: 4em;
+		font-weight: 100;
+	}
+
 	.container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-
-	h1 {
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {

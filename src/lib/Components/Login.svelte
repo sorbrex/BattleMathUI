@@ -19,7 +19,7 @@
 		<div class="content">
 			<form on:submit|preventDefault={handleSubmit}>
 				<h3>Insert a Name and Start:</h3>
-				<input bind:value={username} type="text" placeholder="Heisenberg" class="name" />
+				<input bind:value={username} type="text" placeholder="Heisenberg" class="textInput" />
 			</form>
 		</div>
 	</Frame>
@@ -29,22 +29,5 @@
 	h3 {
 		text-align: center;
 		color: #2f4858;
-	}
-
-	input {
-		width: 250px;
-		border-radius: 10px;
-		border: 2px solid #f2f2f2;
-		padding: 1rem;
-		font-size: 1.2rem;
-	}
-
-	.content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-		bottom: 25px;
 	}
 </style>

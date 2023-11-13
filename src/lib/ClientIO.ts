@@ -1,6 +1,7 @@
 import ioClient, { Socket } from 'socket.io-client';
-import { storedClientIOInstance } from '$lib/Store/Store';
+import {storedClientIOInstance, currentQuestion, playerScores, modalVisible} from '$lib/Store/Store';
 import { API_URL } from '$lib/Constant';
+import type {WSPlayers, WSQuestion} from "$lib/Interfaces/Interfaces";
 
 let clientIO: Socket | undefined;
 
@@ -9,11 +10,12 @@ storedClientIOInstance.subscribe((value: Socket) => {
   clientIO = value;
 });
 
-export function initializeClient() {
+export function initializeClient(username: string) {
   //Initialize the client
   clientIO && clientIO.close()
   clientIO = ioClient(API_URL);
   storedClientIOInstance.set(clientIO);
+  clientIO.emit('registerUsername', username);
 
   //Runtime Events
   clientIO.on("connect", () => {
@@ -31,12 +33,21 @@ export function initializeClient() {
   });
 
   //Custom Events
-  clientIO.on('message', (message) => {
-    console.log('message: ' + message);
+  clientIO.on('question', (question: WSQuestion) => {
+    currentQuestion.set(question);
   });
 
-  clientIO.on('name', (name) => {
-    console.log('name: ' + name);
+  clientIO.on('updateScoreboard', (players: WSPlayers) => {
+    //console.log('Updating Scoreboard: ', JSON.stringify(players, null, 2));
+    playerScores.set(players);
   });
 
+  clientIO.on('gameOver', () => {
+    modalVisible.set(true);
+  });
+
+}
+
+export function submitScore(score: number) {
+  clientIO?.emit('updateScore', score);
 }

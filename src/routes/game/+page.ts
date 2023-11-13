@@ -8,7 +8,7 @@ export function load({ url }) {
   const u = url.searchParams.get('username');
   if (!u) throw redirect(302, '/');
 
-  initializeClient();
+  initializeClient(u);
 
   console.log('load', u);
 

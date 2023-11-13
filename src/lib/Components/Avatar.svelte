@@ -1,9 +1,5 @@
-<script>
-	import Avatar from '$lib/Assets/img/avatar.png';
-</script>
-
 <main>
-	<img src={Avatar} alt="Avatar" class="avatar" />
+	<img src="/images/avatar.png" alt="Avatar" class="avatar" />
 </main>
 
 <style>

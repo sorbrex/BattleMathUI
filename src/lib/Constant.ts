@@ -1,6 +1,6 @@
 import {fade} from "svelte/transition";
 
-export const API_URL = 'http://192.168.129.48:3000';
+export const API_URL = process.env.API_URL;
 
 export const MODAL_SETTINGS = {
 	name: 'Game Over',

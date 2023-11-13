@@ -1,19 +1,18 @@
 import ioClient, { Socket } from 'socket.io-client';
 import {storedClientIOInstance, currentQuestion, playerScores, modalVisible} from '$lib/Store/Store';
-import { API_URL } from '$lib/Constant';
 import type {WSPlayers, WSQuestion} from "$lib/Interfaces/Interfaces";
 
 let clientIO: Socket | undefined;
 
 storedClientIOInstance.subscribe((value: Socket) => {
-  console.log('Event Source Instance: ' + value);
   clientIO = value;
+  console.log('Event Source Instance: ' + JSON.stringify(value));
 });
 
 export function initializeClient(username: string) {
   //Initialize the client
   clientIO && clientIO.close()
-  clientIO = ioClient(API_URL);
+  clientIO = ioClient(process.env.API_URL || 'http://localhost:3000');
   storedClientIOInstance.set(clientIO);
   clientIO.emit('registerUsername', username);
 

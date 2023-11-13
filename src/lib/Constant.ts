@@ -1,7 +1,5 @@
 import {fade} from "svelte/transition";
 
-export const API_URL = process.env.API_URL || "unable to load API_URL";
-
 export const MODAL_SETTINGS = {
 	name: 'Game Over',
 	transition: fade,

@@ -14,8 +14,6 @@ export function initializeClient(username: string) {
   //Initialize the client
   clientIO && clientIO.close()
 
-  console.log('DEBUG => Initializing ClientIO to API_URL: ', import.meta.env.VITE_API_URL || 'http://localhost:3000');
-
   clientIO = ioClient(import.meta.env.VITE_API_URL || 'http://localhost:3000');
   storedClientIOInstance.set(clientIO);
   clientIO.emit('registerUsername', username);

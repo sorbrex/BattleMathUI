@@ -5,8 +5,6 @@
 
 <main>
 	<h1>Hello Mathematician!</h1>
-	<h1>Hello, {import.meta.env.VITE_API_URL}</h1>
-
 	<div class="container">
 		<Login />
 	</div>

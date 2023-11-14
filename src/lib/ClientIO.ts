@@ -6,7 +6,7 @@ let clientIO: Socket | undefined;
 
 storedClientIOInstance.subscribe((value: Socket) => {
   clientIO = value;
-  console.log('Event Source Instance: ' + JSON.stringify(value));
+  console.log('Event Source Instance Updated: ', clientIO?.id);
 });
 
 export function initializeClient(username: string) {

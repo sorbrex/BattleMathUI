@@ -14,7 +14,7 @@ export function initializeClient(username: string) {
   //Initialize the client
   clientIO && clientIO.close()
 
-  clientIO = ioClient(import.meta.env.VITE_API_URL || 'http://localhost:3000');
+  clientIO = ioClient(import.meta.env.VITE_API_URL || 'http://localhost:3000', {transports: ['websocket']});
   storedClientIOInstance.set(clientIO);
   clientIO.emit('registerUsername', username);
 

@@ -2,6 +2,7 @@ import ioClient from 'socket.io-client';
 import type { Socket } from 'socket.io-client';
 import {storedClientIOInstance, currentQuestion, playerScores, modalVisible} from '$lib/Store/Store';
 import type {WSPlayers, WSQuestion} from "$lib/Interfaces/Interfaces";
+import { API_URL } from '$env/static/private';
 
 let clientIO: Socket | undefined;
 
@@ -13,7 +14,10 @@ storedClientIOInstance.subscribe((value: Socket) => {
 export function initializeClient(username: string) {
   //Initialize the client
   clientIO && clientIO.close()
-  clientIO = ioClient(process.env.API_URL || 'http://localhost:3000');
+
+  console.log('DEBUG => Initializing ClientIO to API_URL: ', API_URL || 'http://localhost:3000');
+
+  clientIO = ioClient(API_URL || 'http://localhost:3000');
   storedClientIOInstance.set(clientIO);
   clientIO.emit('registerUsername', username);
 

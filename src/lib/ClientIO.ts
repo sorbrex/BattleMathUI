@@ -1,4 +1,5 @@
-import ioClient, { Socket } from 'socket.io-client';
+import ioClient from 'socket.io-client';
+import type { Socket } from 'socket.io-client';
 import {storedClientIOInstance, currentQuestion, playerScores, modalVisible} from '$lib/Store/Store';
 import type {WSPlayers, WSQuestion} from "$lib/Interfaces/Interfaces";
 
